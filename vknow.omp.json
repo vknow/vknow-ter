@@ -1,0 +1,171 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "red",
+          "powerline_symbol": "\ue0b0",
+          "style": "plain",
+          "template": "\uf0e7 ",
+          "type": "root"
+        },
+        {
+          "foreground": "blue",
+          "properties": {
+            "folder_icon": "\ue5ff",
+            "folder_separator_icon": " / ",
+            "home_icon": "\uf7db",
+            "style": "agnoster"
+          },
+          "style": "plain",
+          "template": "{{ .Path }}",
+          "type": "path"
+        },
+        {
+          "foreground": "green",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}yellow{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}red{{ end }}",
+            "{{ if gt .Ahead 0 }}red{{ end }}",
+            "{{ if gt .Behind 0 }}green{{ end }}"
+          ],
+          "properties": {
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "github_icon": "\uf408 "
+          },
+          "style": "plain",
+          "template": " on{{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }}<red> \uf044 {{ .Working.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<yellow> \uf046 {{ .Staging.String }}</>{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }}",
+          "type": "git"
+        },
+        {
+          "foreground": "#E4F34A",
+          "leading_diamond": " | ",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "diamond",
+          "template": "\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}",
+          "trailing_diamond": "",
+          "type": "python"
+        },
+        {
+          "foreground": "#7FD5EA",
+          "leading_diamond": " | ",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "diamond",
+          "template": "\ufcd1 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "trailing_diamond": "",
+          "type": "go"
+        },
+        {
+          "foreground": "#42E66C",
+          "leading_diamond": " | ",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "diamond",
+          "template": "\ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
+          "trailing_diamond": "",
+          "type": "node"
+        },
+        {
+          "foreground": "#E64747",
+          "leading_diamond": " | ",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "diamond",
+          "template": "\ue791 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "trailing_diamond": "",
+          "type": "ruby"
+        },
+        {
+          "foreground": "#E64747",
+          "leading_diamond": " | ",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "diamond",
+          "template": "\ue738 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "trailing_diamond": "",
+          "type": "java"
+        },
+        {
+          "foreground": "#9B6BDF",
+          "leading_diamond": " | ",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "diamond",
+          "template": "\ue624 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
+          "trailing_diamond": "",
+          "type": "julia"
+        },
+        {
+          "foreground": "#ffffff",
+          "leading_diamond": " | ",
+          "properties": {
+            "fetch_version": false
+          },
+          "style": "diamond",
+          "template": " \ue28e {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
+          "trailing_diamond": "",
+          "type": "flutter"
+        },
+        {
+          "foreground": "#ffffff",
+          "leading_diamond": " | ",
+          "properties": {
+            "fetch_version": false
+          },
+          "style": "diamond",
+          "template": " \uE798 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
+          "trailing_diamond": "",
+          "type": "dart"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#ffbebc",
+          "leading_diamond": "<#ff70a6> \ue200 </>",
+          "properties": {
+            "display_host": true
+          },
+          "style": "diamond",
+          "template": "{{ .UserName }} <#ffffff>on</> ",
+          "type": "session"
+        },
+        {
+          "foreground": "yellow",
+          "properties": {
+            "time_format": "Monday 15:04:05"
+          },
+          "style": "plain",
+          "template": "{{ .CurrentDate | date .Format }} ",
+          "type": "time"
+        },
+        {
+          "foreground": "green",
+          "style": "plain",
+          "template": "🚀",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}
